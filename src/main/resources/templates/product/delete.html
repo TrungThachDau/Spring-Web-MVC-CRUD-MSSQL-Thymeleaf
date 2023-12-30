@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/shared/layout::head">
+    <meta charset="UTF-8">
+    <title> </title>
+</head>
+<body>
+<header th:replace="/shared/layout::header"></header>
+<div class="container">
+    <main role="main" class="pb-3">
+        <h2>Bạn có chắc chắn muốn xóa sản phẩm này?</h2>
+        <form th:action="@{/product/delete/{id}(id=${product.id})}" method="post">
+            <input type="hidden" name="id" th:value="${product.id}">
+            <input type="submit" value="Xác nhận xóa">
+        </form>
+        <a href="/product">Hủy</a>
+    </main>
+</div>
+<footer th:replace="/shared/layout::footer"></footer>
+</body>
+</html>

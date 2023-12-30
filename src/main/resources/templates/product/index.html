@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/shared/layout::head">
+    <meta charset="UTF-8">
+    <title> </title>
+</head>
+<body>
+<header th:replace="/shared/layout::header"></header>
+<div class="container">
+    <main role="main" class="pb-3">
+        <a href="/product/create">Create new product</a>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <tr th:scope="row" th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.category.name}"></td>
+                <td>
+                <a th:href="@{/product/detail/{id}(id=${product.id})}"><button type="button" class="btn btn-second">Detail</button></a>
+                <a th:href="@{/product/edit/{id}(id=${product.id})}"> <button type="button" class="btn btn-primary">Edit</button></a>
+                <a th:href="@{/product/confirmDelete/{id}(id=${product.id})}"> <button type="button" class="btn btn-danger">Delete</button></a>
+                <td>
+            </tr>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </main>
+</div>
+<footer th:replace="/shared/layout::footer"></footer>
+</body>
+</html>

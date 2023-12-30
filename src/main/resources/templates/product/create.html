@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/shared/layout::head">
+    <meta charset="UTF-8">
+    <title> </title>
+</head>
+<body>
+<header th:replace="/shared/layout::header"></header>
+<div class="container">
+    <main role="main" class="pb-3">
+        <h4>Create new product</h4>
+        <form action="#" th:action="@{/saveProduct}" th:object="${product}"
+              method="POST">
+            <input type="number" th:field="*{id}"
+                   placeholder="Id" class="form-control mb-4 col-4">
+            <input type="text" th:field="*{name}"
+                   placeholder="Name" class="form-control mb-4 col-4">
+            <select name="category" class="form-control mb-4 col-4">
+                <option th:each="loai : ${categories}" th:value="${loai.id}" th:text="${loai.name}"></option>
+            </select>
+            <button type="submit" class="btn btn-info col-2"> Save</button>
+        </form>
+    </main>
+    </div>
+<footer th:replace="/shared/layout::footer"></footer>
+</body>
+</html>
